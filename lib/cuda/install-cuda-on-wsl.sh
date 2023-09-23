@@ -25,7 +25,9 @@ Setup Windows subsystem for Linux on CUDA!
 # CUDAリポジトリの登録
 # Origファイルより更新(NVIDIAのサイト準拠に変更)
 # https://docs.nvidia.com/cuda/wsl-user-guide/index.html
-wget https://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}/x86_64/cuda-keyring_1.1-1_all.deb
+rm -r /tmp/cuda/*
+wget https://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}/x86_64/cuda-keyring_1.1-1_all.deb -O /tmp/cuda
+cd /tmp/cuda/
 sudo dpkg -i cuda-keyring_1.1-1_all.deb
 
 # CUDAツールキットのインストール

@@ -31,8 +31,10 @@ cd /tmp/cuda/
 sudo dpkg -i cuda-keyring_1.1-1_all.deb
 
 # CUDAツールキットのインストール
-sudo apt update && sudo apt -y upgrade
-sudo apt install -y ${APT_INSTALL}
+sudo apt -y update && apt -y upgrade \
+  && apt install --no-install-recommends -y ${APT_INSTALL} \
+  && apt clean \
+  && rm -r /var/lib/apt/lists/*
 
 # 環境変数の設定
 cat << 'EOS' >> ~/.profile
@@ -50,7 +52,17 @@ EOS
 sudo rm cuda-keyring_1.1-1_all.deb
 
 # サードパーティーライブラリのインストール（任意）
-sudo apt install -y g++ freeglut3-dev build-essential libx11-dev libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev
+sudo apt -y update && apt install --no-install-recommends -y \
+    g++ \
+    freeglut3-dev \
+    build-essential \
+    libx11-dev \
+    libxmu-dev \
+    libxi-dev \
+    libglu1-mesa \
+    libglu1-mesa-dev
+  && apt clean \
+  && rm -r /var/lib/apt/lists/*
 
 # サンプルプログラムのビルド（任意）
 cd /usr/local/cuda/samples/1_Utilities/deviceQuery/

@@ -16,6 +16,12 @@ export APT_INSTALL=cuda
 export CUDA_VERSION_MAJOR=12
 export CUDA_VERSION_MINOR=2
 
+echo '
+============================================
+Setup Windows subsystem for Linux on CUDA!
+============================================
+'
+
 # CUDAリポジトリの登録
 # Origファイルより更新(NVIDIAのサイト準拠に変更)
 # https://docs.nvidia.com/cuda/wsl-user-guide/index.html
